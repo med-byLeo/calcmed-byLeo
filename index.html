@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>byLeo 🚀 - Saúde Inteligente</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #b3d4ff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #003d80;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            display: none;
+        }
+
+        .healthy {
+            background: linear-gradient(145deg, #a8ff78, #78ffd6);
+        }
+
+        .warning {
+            background: linear-gradient(145deg, #fff78a, #ffd700);
+        }
+
+        .danger {
+            background: linear-gradient(145deg, #ff9a9e, #ff0000);
+            color: white;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #0056b3;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>byLeo 🚀<br><span style="font-size: 0.6em;">Sua Saúde em Foco</span></h1>
+        
+        <div class="calculator">
+            <h2>📊 Calculadora de IMC</h2>
+            
+            <input type="number" id="weight" placeholder="Peso (kg) 🌡️" step="0.1">
+            <input type="number" id="height" placeholder="Altura (m) 📏" step="0.01">
+            
+            <button onclick="calculateBMI()">Calcular IMC ⚡</button>
+            
+            <div id="result"></div>
+        </div>
+
+        <footer>
+            🏆 Cuide da sua saúde com a byLeo - Tecnologia que transforma vidas! 💙
+        </footer>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (!weight || !height) {
+                alert("Por favor, preencha todos os campos! 🚨");
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            const resultDiv = document.getElementById('result');
+            
+            let message = `Seu IMC é: ${bmi.toFixed(1)} - `;
+            let category = 'healthy';
+
+            if (bmi < 18.5) {
+                message += "Abaixo do peso ideal 🎈";
+                category = 'warning';
+            } else if (bmi < 24.9) {
+                message += "Peso saudável 🏆";
+            } else if (bmi < 29.9) {
+                message += "Sobrepeso ⚠️";
+                category = 'warning';
+            } else {
+                message += "Obesidade 🚨";
+                category = 'danger';
+            }
+
+            resultDiv.innerHTML = message;
+            resultDiv.className = category;
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
