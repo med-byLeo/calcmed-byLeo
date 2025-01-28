@@ -81,6 +81,41 @@
             color: white;
         }
 
+        .info-section {
+            display: none;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .info-section h2 {
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-section li::before {
+            content: "•";
+            color: #0056b3;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
         footer {
             margin-top: 40px;
             color: #0056b3;
@@ -103,6 +138,24 @@
             <div id="result"></div>
         </div>
 
+        <div class="info-section" id="infoSection">
+            <h2>📚 Entenda seu IMC e Cuide da sua Saúde</h2>
+            <ul>
+                <li><strong>Abaixo de 18.5:</strong> Abaixo do peso ideal. Procure um nutricionista para uma dieta balanceada e pratique exercícios para ganho de massa muscular. 💪</li>
+                <li><strong>18.5 - 24.9:</strong> Peso saudável! Parabéns! Mantenha hábitos saudáveis e continue se cuidando. 🏆</li>
+                <li><strong>25 - 29.9:</strong> Sobrepeso. Atenção! Considere ajustar sua alimentação e aumentar a atividade física para prevenir problemas de saúde. 🚶‍♂️</li>
+                <li><strong>30 ou mais:</strong> Obesidade. Recomendamos consultar um médico e um nutricionista para criar um plano de saúde personalizado. 🩺</li>
+            </ul>
+            <h3>Dicas Gerais para Manter um IMC Saudável:</h3>
+            <ul>
+                <li>🍎 Alimentação balanceada: Prefira alimentos naturais e evite processados.</li>
+                <li>💧 Hidratação: Beba pelo menos 2 litros de água por dia.</li>
+                <li>🏃‍♀️ Exercícios: Pratique atividades físicas regularmente.</li>
+                <li>😴 Sono: Durma 7-8 horas por noite para manter o metabolismo regulado.</li>
+                <li>🧘‍♂️ Saúde mental: Gerencie o estresse e cuide da sua mente.</li>
+            </ul>
+        </div>
+
         <footer>
             🏆 Cuide da sua saúde com a byLeo - Tecnologia que transforma vidas! 💙
         </footer>
@@ -120,6 +173,7 @@
 
             const bmi = weight / (height * height);
             const resultDiv = document.getElementById('result');
+            const infoSection = document.getElementById('infoSection');
             
             let message = `Seu IMC é: ${bmi.toFixed(1)} - `;
             let category = 'healthy';
@@ -140,6 +194,7 @@
             resultDiv.innerHTML = message;
             resultDiv.className = category;
             resultDiv.style.display = 'block';
+            infoSection.style.display = 'block';
         }
     </script>
 </body>
